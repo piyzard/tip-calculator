@@ -1,0 +1,50 @@
+START 
+
+  DISPLAY "Enter the total bill amount: " 
+  READ bill_amount 
+
+  WHILE bill_amount <= 0 
+    DISPLAY "Error: Bill amount must be a positive number. Try again." 
+    READ bill_amount 
+  END WHILE 
+
+  DISPLAY "Enter service quality (poor, fair, good, excellent): " 
+  READ service_quality 
+
+  SWITCH (service_quality) 
+    CASE "poor": 
+      tip_percentage = 10 
+    CASE "fair": 
+      tip_percentage = 15 
+    CASE "good": 
+      tip_percentage = 18 
+    CASE "excellent": 
+      tip_percentage = 20 
+    DEFAULT: 
+      DISPLAY "Error: Invalid service quality. Choose from (poor, fair, good, excellent)." 
+      EXIT 
+  END SWITCH 
+
+  DISPLAY "Enter the number of people splitting the bill: " 
+  READ num_people 
+
+  WHILE num_people <= 0 
+    DISPLAY "Error: Number of people must be a positive integer. Try again." 
+    READ num_people 
+  END WHILE 
+
+  tip_amount = (bill_amount * tip_percentage) / 100 
+  total_amount = bill_amount + tip_amount 
+  amount_per_person = total_amount / num_people 
+
+  DISPLAY "------------------------------" 
+  DISPLAY "Bill Summary:" 
+  DISPLAY "Bill amount: $" + bill_amount 
+  DISPLAY "Service quality: " + service_quality + " (" + tip_percentage + "%)" 
+  DISPLAY "Tip amount: $" + tip_amount 
+  DISPLAY "Total amount: $" + total_amount 
+  DISPLAY "Number of people: " + num_people 
+  DISPLAY "Amount per person: $" + amount_per_person 
+  DISPLAY "------------------------------" 
+
+END
